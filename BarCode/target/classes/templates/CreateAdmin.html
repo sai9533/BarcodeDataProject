@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>BarCode</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body th:style="'background-image: url(' + @{/images/7ac0085d2b84cf32009f6e502cd99664.avif} + '); background-repeat: no-repeat; background-size: cover;'">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f8f9fa;">
+    <div class="container">
+        <a class="navbar-brand" href="#" style="color: #704241; font-size: 24px; font-weight: bold;">Gold Shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/display}" style="color: #704241;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/data}" style="color: #704241;">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/sales}" style="color: #704241;">Sales</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/resetpwd}" style="color: #704241;">Reset</a>
+                </li>
+                <h1 th:text="${session.authenticatedUser.getId()}"></h1>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title text-center mb-4" style="color: #704241; font-weight: bold;">Add New Admin</h4>
+                   <h1 th:text="${msg}"></h1>
+                    <form th:action="@{/adminSuccess}" th:object="${user}" method="post" >
+                        <div class="form-group">
+                            <input type="text" class="form-control"  placeholder="Enter the Name" th:field="*{fullName}">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control"  placeholder="Enter the EmailId" th:field="*{email}">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control"  placeholder="Enter the Password" th:field="*{password}">
+                        </div>
+                        <!--  <select th:field="*{role}">
+                        <option>Admin</option>
+                        <option>User</option>
+                        </select>-->
+                        <button type="submit" class="btn btn-primary btn-block">AddUser</button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

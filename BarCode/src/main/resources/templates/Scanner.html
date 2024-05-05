@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+   
+ <style>
+    .product-info {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.qr-code {
+    margin-right: 10px; /* Adjust margin between product name and QR code */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+}
+
+.card-body > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+    
+    
+
+    </style>
+    
+    
+    
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #f8f9fa;">
+    <div class="container">
+        <a class="navbar-brand" href="#" style="color: #704241; font-size: 24px; font-weight: bold;">Gold Shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/display}" style="color: #704241;">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/data}" style="color: #704241;">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/sales}" style="color: #704241;">Sales</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+ <form th:action="@{/submitscanner}" class="col-12" method="post">
+   <input class="form-control col-12" type="search" placeholder="Search" aria-label="Search" id="pid" style="width:400px;margin-left:200px;" name="id">
+ </form>
+<div th:if="${lst!=null}"class="container mt-3" style="margin-right:10px;">
+    <div class="row">
+        <div class="col-md-4" >
+            <div class="card h-100" style="margin-bottom: 20px;">
+                <img th:src="'data:image/png;base64,' + ${lst.productImg}" class="card-img-top img-fluid" alt="QR Code" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2 bg-white"  style="padding:0px">
+                       <div class="card-body product-info p-0 " style="font-weight:bold">
+                      
+           <div>
+           <span th:text="${lst.productName}" ></span>
+           </div>
+        <div>
+            
+           
+         <img th:src="'data:image/png;base64,' + ${lst.qrImg}" width="200px" height="30px" alt="QR Code" >
+            
+           
+        </div>
+        <div>
+           <span th:text="${lst.productId}" style="margin-right:10px;"></span>
+            <span>DJ</span>
+           </div>
+    </div> 
+                        <div class="card-body p-0 mr-5"  style="font-size:10px;font-weight:bold;">
+                            <div>
+                                <span style="color:green;">Gwt: </span>
+                                <span th:text="${lst.productWeight}"></span>
+                            </div>
+                            <div>
+                                <span style="color:green;">Swt:</span>
+                                <span th:text="${lst.productPrice}"></span>
+                            </div>
+                            <div >
+                                <span style="color:green;">Nwt: </span>
+                                <span th:text="${lst.productPrice}"></span>
+                            </div>
+                        </div>
+
+
+                    </div>
+               
+                    <!-- Add more content as needed -->
+                    <a th:href="@{'/status/' + ${lst.productId}}" class="btn btn-warning btn-block">SOLD</a>
+                    <button class="captureButton btn btn-danger btn-block" >Capture and Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

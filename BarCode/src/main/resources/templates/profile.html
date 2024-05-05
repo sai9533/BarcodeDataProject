@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+<section style="text-align: center; padding: 20px;">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5; /* Set a light background color */
+        }
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #333; /* Set a dark color for the text */
+        }
+        main {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px; /* Add some space between the images */
+        }
+        .image-container {
+            width: 45%; /* Adjust image container width */
+            background-color: #fff; /* Set a white background for the image container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        footer {
+            margin-top: 20px;
+            background-color: #f8f8f8;
+            padding: 10px 0;
+            text-align: center;
+        }
+    </style>
+
+    <header>
+        <h1>Welcome Amigo</h1>
+        <p style="font-size: 18px; color: #666;">Discover the beauty of gold jewelry</p>
+    </header>
+
+    <main>
+        <div class="image-container">
+            <img src="/imageshome/Viyahs Shaadis Nikkahs.jpeg" alt="bracelet 1">
+        </div>
+        <div class="image-container">
+            <img src="/imageshome/pexels-photo-2865977.webp" alt="bracelet 2">
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gold Shop. All rights reserved.</p>
+    </footer>
+</section>
+</body>
+</html>
